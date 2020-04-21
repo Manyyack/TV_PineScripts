@@ -10,8 +10,7 @@ res3 = input("15", type=input.resolution, title="Third Timeframe")
 res4 = input("60", type=input.resolution, title="Fourth Timeframe")
 atype = input(1,minval=1,maxval=7,title="1=SMA, 2=EMA, 3=WMA, 4=VWMA, 5=RMA")
 
-Trend=close>(atype == 1 ? sma(close,Pd) : atype == 2 ? ema(close,Pd) : atype == 3 ? wma(close,Pd) : atype == 4 ?
-vwma(close, Pd) : rma(close,Pd))?1:-1
+Trend=close>(atype == 1 ? sma(close,Pd) : atype == 2 ? ema(close,Pd) : atype == 3 ? wma(close,Pd) : atype == 4 ?vwma(close, Pd) : rma(close,Pd))?1:-1
 
 // Security
 ST1_Trend_MTF = security(syminfo.tickerid, res1, Trend,barmerge.lookahead_on)
@@ -45,8 +44,7 @@ lapos_y = highest(5)// + (0.15 * highest(20))
 f_draw_label(x,y,_text,_textcolor, _size)=>
     var label Label = na
     label.delete(Label)
-    Label := label.new(x, y, _text, color=color.new(color.white, 20), textcolor=_textcolor, style=label.style_none,
-yloc=yloc.price, xloc=xloc.bar_time, size=_size)
+    Label := label.new(x, y, _text, color=color.new(color.white, 20), textcolor=_textcolor, style=label.style_none,yloc=yloc.price, xloc=xloc.bar_time, size=_size)
 
 res_to_string(res)=>
     str = iff(res == "1", "m1", iff(res == "5", "m5", iff(res == "15", "m15", iff(res == "30", "m30", iff(res == "60","H1", iff(res == "120", "H2",
