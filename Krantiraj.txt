@@ -1,0 +1,21 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © Manyyack
+
+//@version=4
+study("KrantiRaj",overlay=true)
+
+var fill_color = color.black
+
+ema1 = wma(close,150)
+ema2 = wma(close,250)
+
+if ema1 > ema2
+    fill_color := color.green
+else
+    fill_color := color.red
+
+line1 = plot(ema1,color=fill_color)
+line2= plot(ema2,color=fill_color)
+
+fill(line1,line2,color=fill_color)
+
